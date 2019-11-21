@@ -1,0 +1,10 @@
+---
+source_directory: "spec/infra/harness"
+state_file: "%{hiera('project_directory')}/state/harness.tfstate"
+vars:
+  region: "%{hiera('region')}"
+
+  group_name: "test-%{hiera('deployment_identifier')}"
+  group_policies:
+    - "arn:aws:iam::aws:policy/ReadOnlyAccess"
+    - "arn:aws:iam::aws:policy/job-function/Billing"
