@@ -4,6 +4,4 @@ state_file: "%{hiera('project_directory')}/state/prerequisites.tfstate"
 vars:
   region: "%{hiera('region')}"
 
-  user_1_name: "test-1-%{hiera('deployment_identifier')}"
-  user_2_name: "test-2-%{hiera('deployment_identifier')}"
-  user_3_name: "test-3-%{hiera('deployment_identifier')}"
+  deployment_identifier: "%{hiera('deployment_identifier')}"
