@@ -24,6 +24,10 @@ module "group" {
 }
 ```
 
+See the 
+[Terraform registry entry](https://registry.terraform.io/modules/infrablocks/assumable-roles-policy/aws/latest) 
+for more details.
+
 ### Inputs
 
 | Name                  | Description                                      | Default | Required |
@@ -33,6 +37,11 @@ module "group" {
 
 | Name | Description |
 |------|-------------|
+
+### Compatibility
+
+This module is compatible with Terraform versions greater than or equal to 
+Terraform 0.14.
 
 Development
 -----------
