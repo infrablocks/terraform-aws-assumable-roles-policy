@@ -1,5 +1,5 @@
 ---
-configuration_directory: "%{cwd}/spec/unit/infra/prerequisites"
+configuration_directory: "%{cwd}/spec/integration/infra/prerequisites"
 state_file: "%{cwd}/state/prerequisites.tfstate"
 vars:
   region: "%{hiera('region')}"

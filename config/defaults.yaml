@@ -3,5 +3,3 @@ region: 'us-east-1'
 
 component: 'test'
 deployment_identifier: "%{hiera('seed')}"
-
-#configuration_directory: "%{hiera('work_directory')}/%{hiera('source_directory')}"
