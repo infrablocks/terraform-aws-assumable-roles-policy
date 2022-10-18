@@ -14,7 +14,7 @@ The policy deployment consists of:
 Usage
 -----
 
-To use the module, include something like the following in your terraform
+To use the module, include something like the following in your Terraform
 configuration:
 
 ```hcl-terraform
@@ -51,7 +51,7 @@ Development
 In order for the build to run correctly, a few tools will need to be installed 
 on your development machine:
 
-* Ruby (3.1.x)
+* Ruby (3.1.1)
 * Bundler
 * git
 * git-crypt
@@ -124,13 +124,13 @@ aws-vault exec <profile> -- ./go deployment:prerequisites:provision[<deployment_
 To provision the module contents:
 
 ```bash
-aws-vault exec <profile> -- ./go deployment:harness:provision[<deployment_identifier>]
+aws-vault exec <profile> -- ./go deployment:root:provision[<deployment_identifier>]
 ```
 
 To destroy the module contents:
 
 ```bash
-aws-vault exec <profile> -- ./go deployment:harness:destroy[<deployment_identifier>]
+aws-vault exec <profile> -- ./go deployment:root:destroy[<deployment_identifier>]
 ```
 
 To destroy the module prerequisites:

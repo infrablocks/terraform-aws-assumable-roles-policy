@@ -7,8 +7,7 @@ data "terraform_remote_state" "prerequisites" {
 }
 
 module "assumable_roles_policy" {
-  # This makes absolutely no sense. I think there's a bug in terraform.
-  source = "./../../../../../../../"
+  source = "./../../../../"
 
   policy_name = var.policy_name
   policy_description = var.policy_description
