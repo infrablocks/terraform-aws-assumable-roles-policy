@@ -3,11 +3,10 @@
 require 'bundler/setup'
 
 require 'aws-sdk'
-require 'awspec'
-require 'logger'
 require 'rspec'
-require 'rspec/terraform'
 require 'ruby_terraform'
+require 'rspec/terraform'
+require 'logger'
 require 'stringio'
 
 Dir[File.join(__dir__, 'support', '**', '*.rb')]
@@ -19,12 +18,15 @@ RSpec.configure do |config|
   config.expect_with(:rspec) { |c| c.syntax = :expect }
 
   config.terraform_binary = 'vendor/terraform/bin/terraform'
-  config.terraform_log_file_path = 'build/logs/integration.log'
+  config.terraform_log_file_path = 'build/logs/unit.log'
   config.terraform_log_streams = [:file]
+  config.terraform_log_level = Logger::DEBUG
   config.terraform_configuration_provider =
     RSpec::Terraform::Configuration.chain_provider(
       providers: [
-        RSpec::Terraform::Configuration.seed_provider,
+        RSpec::Terraform::Configuration.seed_provider(
+          generator: -> { SecureRandom.hex[0, 8] }
+        ),
         RSpec::Terraform::Configuration.in_memory_provider(
           no_color: true
         ),
@@ -38,4 +40,16 @@ RSpec.configure do |config|
         )
       ]
     )
+
+  config.before(:suite) do
+    apply(
+      role: :prerequisites
+    )
+  end
+  config.after(:suite) do
+    destroy(
+      role: :prerequisites,
+      only_if: -> { ENV['SEED'].nil? }
+    )
+  end
 end

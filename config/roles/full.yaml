@@ -1,9 +1,10 @@
 ---
-configuration_directory: "%{cwd}/spec/unit/infra/root"
-state_file: "%{cwd}/state/root.tfstate"
+configuration_directory: "%{cwd}/examples/full"
+state_file: "%{cwd}/state/full.tfstate"
 vars:
   region: "%{hiera('region')}"
 
+  component: "%{hiera('component')}"
   deployment_identifier: "%{hiera('deployment_identifier')}"
 
   policy_name: "test-policy-%{hiera('deployment_identifier')}"
