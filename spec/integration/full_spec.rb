@@ -10,7 +10,10 @@ describe 'full example' do
   end
 
   after(:context) do
-    destroy(role: :full)
+    destroy(
+      role: :full,
+      only_if: -> { !ENV['FORCE_DESTROY'].nil? || ENV['SEED'].nil? }
+    )
   end
 
   let(:policy_name) do
